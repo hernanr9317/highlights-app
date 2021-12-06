@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getDataAxios } from './../helpers/getDataAxios';
 import { List } from './List';
+import { Search } from './Search';
 
 export const Video = () => {
 
@@ -9,7 +10,7 @@ export const Video = () => {
     const [displayVideo, setDisplayVideo] = useState(null)
     
 
-    const divVideo = document.getElementById('video')
+    const divVideo = document.getElementById('video');
 
 
     useEffect(() => {
@@ -35,6 +36,8 @@ export const Video = () => {
 
     return (
         <div className="row">
+
+            <Search listVideos={listVideos} />
 
             <div className="col-12 col-md-8">
                 <h4><strong>{listVideos[0]?.title} </strong></h4>
