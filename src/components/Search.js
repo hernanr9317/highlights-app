@@ -5,7 +5,7 @@ export const Search = ( {listVideos} ) => {
 
     const [filteredVideos, setFilteredVideos] = useState(null);
     
-    const [ formValues, handleInputChange ] = useForm({ searchText: " ",  });
+    const [ formValues, handleInputChange ] = useForm({searchText:""});
 
     const { searchText } = formValues;
 
@@ -74,19 +74,21 @@ export const Search = ( {listVideos} ) => {
 
 
     return (
-        <div className="mb-2 mt-4 p-4">
+        <div className="mb-2 p-4" id="search">
 
             <form onSubmit={handleSearch}>
                 <input
                     className="form-control" 
                     type="text" 
-                    placeolder="Search.."
+                    placeholder="Search..."
                     name="searchText"
                     autoComplete="off"
                     value={searchText}
                     onChange={handleInputChange}    
-                    />
+                />
+
             </form>
+
 
             <div className="row mt-4 d-flex justify-content-center"  style={{maxHeight:500, overflow: 'hidden', overflowY: 'scroll'}}>
 
@@ -96,7 +98,7 @@ export const Search = ( {listVideos} ) => {
                     <h4><strong>{mainVideo?.title} </strong></h4>
                     <h5>{mainVideo?.videos[0]?.title}</h5>
 
-                    <div id="videoSearch"></div>
+                    <div id="videoSearch" style={{maxWidth: 700}}></div>
                 
                     <h5> {mainVideo?.competition}</h5>
 

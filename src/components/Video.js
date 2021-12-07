@@ -37,6 +37,7 @@ export const Video = () => {
         }
 
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [listVideos])
 
     useEffect(() => {
@@ -59,15 +60,18 @@ export const Video = () => {
         setDisplayVideo(mainVideo?.videos[0]?.embed)  
             
        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [titleSlected,mainVideo])
     
 
 
     return (
-        <div className="row">
+        <div className="row m-0 p-0">
 
             <Search listVideos={listVideos} />
 
+            <h1 className="text-center" id="lastVideos">Last videos</h1>
+            <hr/>
 
             {(mainVideo) && 
             

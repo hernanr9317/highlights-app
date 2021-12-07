@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Video } from './components/Video';
-import { Navbar } from './components/Navbar';
 import { DataContext } from './components/Context/Context';
+import { AppRouter } from './router/AppRouter';
+
 
 export const App = () => {
 
@@ -12,9 +12,8 @@ export const App = () => {
         
         <DataContext.Provider value={ { dataContext, setDataContext } }>
 
-            <Navbar />
-   
-            <Video />
+
+            <AppRouter />
             
 
         </DataContext.Provider>
