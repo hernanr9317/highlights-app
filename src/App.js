@@ -14,7 +14,7 @@ export const App = () => {
 
             <Header />
 
-            <div className="container mt-2 p-0">
+            <div className="container mt-2 p-0 animate__animated animate__fadeIn">
 
                 <AppRouter />
                 

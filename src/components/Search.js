@@ -94,7 +94,7 @@ export const Search = ( {listVideos} ) => {
 
             {(mainVideo) && 
             
-                <div className="col-12 col-md-10">
+                <div className="col-12 col-md-10 animate__animated animate__fadeIn">
                     <h4><strong>{mainVideo?.title} </strong></h4>
                     <h5>{mainVideo?.videos[0]?.title}</h5>
 
@@ -112,7 +112,7 @@ export const Search = ( {listVideos} ) => {
             
                     filteredVideos?.map( item =>(
 
-                    <div className="col list-group-item-action"  style={{cursor: 'pointer'}} key={item.title} onClick={ (e) => handleClick(e, item.title)}>
+                    <div className="col list-group-item-actio animate__animated animate__fadeIn"  style={{cursor: 'pointer'}} key={item.title} onClick={ (e) => handleClick(e, item.title)}>
                         <h5><strong>{item?.title} </strong></h5>
                         <h6>{item?.videos[0]?.title}</h6>
 

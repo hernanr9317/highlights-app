@@ -19,6 +19,8 @@ export const Video = () => {
 
     const divVideo = document.getElementById('video');
 
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
 
@@ -32,7 +34,6 @@ export const Video = () => {
     useEffect(() => {
         
         if(!mainVideo){
-
             setDisplayVideo( listVideos[0]?.videos[0]?.embed );
         }
 
@@ -43,7 +44,11 @@ export const Video = () => {
     useEffect(() => {
      
         if(divVideo){
-            divVideo.innerHTML = displayVideo
+            setLoading(true);
+                    
+                    divVideo.innerHTML = displayVideo
+                                
+            setLoading(false);
         }
 
     }, [divVideo,displayVideo])
@@ -73,13 +78,15 @@ export const Video = () => {
             <h1 className="text-center" id="lastVideos">Last videos</h1>
             <hr/>
 
+
             {(mainVideo) && 
-            
-            <div className="col-12 col-md-8">
+             
+            <div className="col-12 col-md-8 animate__animated animate__fadeIn">
+
                 <h4><strong>{mainVideo?.title} </strong></h4>
                 <h5>{mainVideo?.videos[0]?.title}</h5>
 
-                <div id="video"></div>
+                <div id="video" className="animate__animated animate__fadeIn"></div>
             
                 <h5> {mainVideo?.competition}</h5>
 
@@ -89,11 +96,12 @@ export const Video = () => {
 
             {(!mainVideo) &&
 
-                <div className="col-12 col-md-8">
+                <div className="col-12 col-md-8 animate__animated animate__fadeIn">
+
                     <h4><strong>{listVideos[0]?.title} </strong></h4>
                     <h5>{listVideos[0]?.videos[0]?.title}</h5>
 
-                    <div id="video"></div>
+                    <div id="video" className="animate__animated animate__fadeIn"></div>
                 
                     <h5> {listVideos[0]?.competition}</h5>
 
