@@ -8,48 +8,69 @@ export const Search = ( {listVideos} ) => {
     const [ formValues, handleInputChange ] = useForm({ searchText: " ",  });
 
     const { searchText } = formValues;
-    
+
+    const [mainVideo, setMainVideo] = useState(null);
+
+    const divVideoSearch = document.getElementById('videoSearch');
+
+    const [displayVideo, setDisplayVideo] = useState(null);
+
+
 
     const handleSearch = (e) =>{
+
+        let searchTextClean = searchText.trim()
 
         e.preventDefault();
 
         if( searchText.length > 1 ){
 
+            setMainVideo(null);
             
-            const searchTextUpper = searchText.toUpperCase();
     
             const listUpper = listVideos?.map( video =>({
     
                 ...video,
                 title: video?.title?.toUpperCase()
     
-            }))
-            
-            const listVdeosNew = listUpper.map( video => (
-    
-                (video?.title?.includes(searchTextUpper)) && video  
-    
-                ))
-            
-    
-            const listVdeosNew2 = listVdeosNew.filter( item => item !== false) 
-    
-    
-            setFilteredVideos(listVdeosNew2)
+            }));
 
+ 
+            let list = listUpper?.filter( item => item?.title?.includes(searchTextClean.toUpperCase()) === true);
+
+      
+            setFilteredVideos(list);
         }
-
-        
         
     }
 
-    useEffect(() => {
+
+
+    const handleClick = (e, titleSlected) => {
+
+        e.preventDefault()
         
-        setFilteredVideos(filteredVideos)
+        filteredVideos?.forEach( element => (
 
-    }, [filteredVideos,formValues])
+        
+            (element?.title === titleSlected) && setMainVideo(element) 
+            
+        ))
 
+    }
+
+    useEffect(() => {
+
+        setDisplayVideo(mainVideo?.videos[0]?.embed)  
+
+     
+        if(divVideoSearch){
+            divVideoSearch.innerHTML = displayVideo
+        }
+
+    }, [divVideoSearch,displayVideo, mainVideo])
+
+ 
 
 
     return (
@@ -67,11 +88,29 @@ export const Search = ( {listVideos} ) => {
                     />
             </form>
 
-            <div className="row mt-4"  style={{maxHeight:500, overflow: 'hidden', overflowY: 'scroll'}}>
+            <div className="row mt-4 d-flex justify-content-center"  style={{maxHeight:500, overflow: 'hidden', overflowY: 'scroll'}}>
 
-            {filteredVideos?.map( item =>(
+            {(mainVideo) && 
+            
+                <div className="col-12 col-md-10">
+                    <h4><strong>{mainVideo?.title} </strong></h4>
+                    <h5>{mainVideo?.videos[0]?.title}</h5>
 
-                    <div className="col list-group-item-action"  style={{cursor: 'pointer'}} key={item.title}>
+                    <div id="videoSearch"></div>
+                
+                    <h5> {mainVideo?.competition}</h5>
+
+                </div>           
+            
+            }
+
+
+
+            { (!mainVideo) && 
+            
+                    filteredVideos?.map( item =>(
+
+                    <div className="col list-group-item-action"  style={{cursor: 'pointer'}} key={item.title} onClick={ (e) => handleClick(e, item.title)}>
                         <h5><strong>{item?.title} </strong></h5>
                         <h6>{item?.videos[0]?.title}</h6>
 
@@ -85,7 +124,6 @@ export const Search = ( {listVideos} ) => {
                     ))}
 
             </div>
-
             {(filteredVideos !== null && filteredVideos.length === 0) && 
             
                 <div class="alert alert-secondary" role="alert">
