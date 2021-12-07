@@ -129,7 +129,7 @@ export const Search = ( {listVideos} ) => {
             {(filteredVideos !== null && filteredVideos.length === 0) && 
             
                 <div class="alert alert-secondary" role="alert">
-                 No results found!
+                Without results!
                 </div>
              }
             

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DataContext } from './components/Context/Context';
 import { AppRouter } from './router/AppRouter';
+import { Header } from './components/Header';
 
 
 export const App = () => {
@@ -8,16 +9,18 @@ export const App = () => {
     const [dataContext, setDataContext] = useState({})
 
     return (
-        <div className="container mt-2 p-0">
         
         <DataContext.Provider value={ { dataContext, setDataContext } }>
 
+            <Header />
 
-            <AppRouter />
-            
+            <div className="container mt-2 p-0">
+
+                <AppRouter />
+                
+            </div>
 
         </DataContext.Provider>
         
-        </div>
     )
 }
