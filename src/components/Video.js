@@ -73,9 +73,13 @@ export const Video = () => {
     return (
         <div className="row m-0 p-0">
 
+            <div>
+                <h1>See <strong>latest</strong> football <strong>highlights</strong>.</h1>
+            </div>
+
             <Search listVideos={listVideos} />
 
-            <h1 className="text-center" id="lastVideos">Last videos</h1>
+            <h1 className="text-center" id="lastVideos"><strong>Last videos</strong></h1>
             <hr/>
 
 
