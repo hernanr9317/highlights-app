@@ -80,7 +80,7 @@ export const Search = ( {listVideos} ) => {
                 <input
                     className="form-control" 
                     type="text" 
-                    placeholder="Search..."
+                    placeholder="Search Club..."
                     name="searchText"
                     autoComplete="off"
                     value={searchText}

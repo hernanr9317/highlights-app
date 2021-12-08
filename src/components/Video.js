@@ -19,8 +19,6 @@ export const Video = () => {
 
     const divVideo = document.getElementById('video');
 
-    const [loading, setLoading] = useState(false);
-
 
     useEffect(() => {
 
@@ -44,11 +42,8 @@ export const Video = () => {
     useEffect(() => {
      
         if(divVideo){
-            setLoading(true);
                     
-                    divVideo.innerHTML = displayVideo
-                                
-            setLoading(false);
+            divVideo.innerHTML = displayVideo
         }
 
     }, [divVideo,displayVideo])
